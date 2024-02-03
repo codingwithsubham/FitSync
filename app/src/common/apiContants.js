@@ -1,0 +1,16 @@
+module.exports = {
+  API_ROUTE_PUB: '/api/v1',
+  LOGIN: '/auth',
+  REGISTER: '/auth/register',
+  GET_USER: '/auth',
+  FILE_UPLOAD: '/uploads/photos',
+  CREATE_PROF: '/profile',
+  UPDATE_PROF: '/profile/update',
+  UPDATE_PHOTOS: '/profile/photos',
+  GET_PROFS: '/profile/find',
+  GET_PROF: '/profile/find',
+  ADD_MATCH: '/match/add',
+  APPROVE_MATCH: '/match/approve',
+  GET_CHAT: '/chat/',
+  GET_CONV: '/chat/get-conversation',
+};

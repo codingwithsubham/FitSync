@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.shadimakers.twa",
+    "sha256_cert_fingerprints": ["56:A1:DB:D5:37:42:60:68:88:55:99:0E:2C:41:A7:FB:FA:2F:C4:E1:5F:3C:E0:F6:6C:1F:38:38:F2:8E:69:B5"]
+  }
+}]
