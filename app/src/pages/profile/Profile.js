@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import { getImage, getImagebyid } from '../../utils/imagebuilder';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,6 +9,7 @@ const Profile = ({ profileData, isSelf }) => {
   const { profile } = useSelector((state) => state.auth);
   const myProfile = profile?.profData;
   const dispatch = useDispatch();
+  const [tab, setTab] = useState('tab1');
 
   const isMatchedorRequested = () => {
     if (myProfile?.matchRequests?.includes(id)) {
@@ -97,82 +98,90 @@ const Profile = ({ profileData, isSelf }) => {
       </div>
       <div className="prodile-desc">
         <p>
-          I’m {profileData?.info?.age} years old, {profileData?.info?.body}
-          cm tall, with a medium assemble and a constructive outlook within the
-          course of life. My Work type is {profileData?.info?.work}. According
-          to family, I’m a daring, self-made, down-to-earth specific particular
-          person. I’m searching for a {profileData?.info?.lookingfor} Life
-          Partner for me at {profileData?.info?.city},{' '}
-          {profileData?.info?.state}.
+          I’m {profileData?.info?.age} years old, with a medium assemble and a
+          constructive outlook within the course of life. My Work type is{' '}
+          {profileData?.info?.work}. According to family, I’m a daring,
+          self-made, down-to-earth specific particular person. I'm a fitness
+          person, Love to stay fit and Balance my Work Life at{' '}
+          {profileData?.info?.city}, {profileData?.info?.state}.<br />
+          {profileData?.info?.about}.
         </p>
-        <div className="form-break">
-          <div className="counter-frm-brk">01</div>
-          <div className="text-frm-brk">Personal Details</div>
-        </div>
-        <div className="content">
-          <b>Name : &nbsp;</b>
-          <span>{profileData?.info?.name}</span>
-          <b>Age : &nbsp;</b>
-          <span>{profileData?.info?.age}</span>
-          <b>Sex : &nbsp;</b>
-          <span>{profileData?.info?.gender}</span>
-          <b>Relegion : &nbsp;</b>
-          <span>{profileData?.info?.religion}</span>
-          <b>Subcast : &nbsp;</b>
-          <span>{profileData?.info?.subcast}</span>
-          <b>Cast : &nbsp;</b>
-          <span>{profileData?.info?.cast}</span>
-          <b>About : &nbsp;</b>
-          <span>{profileData?.info?.about}</span>
-        </div>
-        <div className="form-break">
-          <div className="counter-frm-brk">02</div>
-          <div className="text-frm-brk">Looks Details</div>
-        </div>
-        <div className="content">
-          <b>Height : &nbsp;</b>
-          <span>{profileData?.info?.body}cm.</span>
-          <b>Hair : &nbsp;</b>
-          <span>{profileData?.info?.hair} Color</span>
-          <b>Weight: &nbsp;</b>
-          <span>{profileData?.info?.weight}kg</span>
-          <b>Eyes: &nbsp;</b>
-          <span>{profileData?.info?.eyes} Color</span>
-        </div>
-        <div className="form-break">
-          <div className="counter-frm-brk">03</div>
-          <div className="text-frm-brk">Work Details</div>
-        </div>
-        <div className="content">
-          <b>Job Type : &nbsp;</b>
-          <span>{profileData?.info?.work}</span>
-          <b>Sector : &nbsp;</b>
-          <span>{profileData?.info?.workSector}</span>
-          <b>Company: &nbsp;</b>
-          <span>{profileData?.info?.companyName}</span>
-        </div>
-        <div className="form-break">
-          <div className="counter-frm-brk">04</div>
-          <div className="text-frm-brk">Location Details</div>
-        </div>
-        <div className="content">
-          <b>City : &nbsp;</b>
-          <span>{profileData?.info?.city}</span>
-          <b>State : &nbsp;</b>
-          <span>{profileData?.info?.state}</span>
-        </div>
-        <div className="form-break">
-          <div className="counter-frm-brk">05</div>
-          <div className="text-frm-brk">Pictures</div>
-        </div>
-      </div>
-      <div className="profile-photos">
-        {profileData?.imgs?.map((itm, idx) => (
-          <div className="img-wrper" key={idx}>
-            <img src={getImagebyid(itm)} alt="" />
+        <div className="row prfile-tabs-wrap">
+          <div className="col s12">
+            <ul className="tabs">
+              <li
+                className={`tab col s3${
+                  tab === 'tab1' ? ' active fade-an' : ''
+                }`}
+                onClick={() => setTab('tab1')}
+              >
+                <Link>
+                  <i className="material-icons">gradient</i>
+                </Link>
+              </li>
+              <li
+                className={`tab col s3${
+                  tab === 'tab2' ? ' active fade-an' : ''
+                }`}
+                onClick={() => setTab('tab2')}
+              >
+                <Link>
+                  <i className="material-icons">insert_photo</i>
+                </Link>
+              </li>
+            </ul>
           </div>
-        ))}
+        </div>
+        {tab === 'tab1' && (
+          <Fragment>
+            <div className="form-break">
+              <div className="counter-frm-brk">01</div>
+              <div className="text-frm-brk">Personal Details</div>
+            </div>
+            <div className="content">
+              <b>Name : &nbsp;</b>
+              <span>{profileData?.info?.name}</span>
+              <b>Age : &nbsp;</b>
+              <span>{profileData?.info?.age}</span>
+              <b>Sex : &nbsp;</b>
+              <span>{profileData?.info?.gender}</span>
+              <b>About : &nbsp;</b>
+              <span>{profileData?.info?.about}</span>
+            </div>
+            <div className="form-break">
+              <div className="counter-frm-brk">02</div>
+              <div className="text-frm-brk">Work Details</div>
+            </div>
+            <div className="content">
+              <b>Job Type : &nbsp;</b>
+              <span>{profileData?.info?.work}</span>
+              <b>Sector : &nbsp;</b>
+              <span>{profileData?.info?.workSector}</span>
+              <b>Company: &nbsp;</b>
+              <span>{profileData?.info?.companyName}</span>
+            </div>
+            <div className="form-break">
+              <div className="counter-frm-brk">03</div>
+              <div className="text-frm-brk">Location Details</div>
+            </div>
+            <div className="content">
+              <b>City : &nbsp;</b>
+              <span>{profileData?.info?.city}</span>
+              <b>State : &nbsp;</b>
+              <span>{profileData?.info?.state}</span>
+            </div>
+          </Fragment>
+        )}
       </div>
+      {tab === 'tab2' && (
+        <div className="profile-photos">
+          {profileData?.imgs?.map((itm, idx) => (
+            <div className="img-wrper" key={idx}>
+              <img src={getImagebyid(itm)} alt="" />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

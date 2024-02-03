@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Profile = require('../models/profile');
+const User = require('../models/user');
 
 router.post('/', auth, async (req, res) => {
   try {
@@ -10,6 +11,12 @@ router.post('/', auth, async (req, res) => {
       profData: req.body,
     });
     await profile.save();
+    await User.findOneAndUpdate(
+      { _id: req.user._id },
+      {
+        $set: { profileId: profile?._id },
+      }
+    );
     return res.json(profile);
   } catch (error) {
     //console.log(error);

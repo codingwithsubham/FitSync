@@ -13,7 +13,7 @@ const authenticateGoogle = () => {
 const uploadToGoogleDrive = async (file, auth) => {
   const fileMetadata = {
     name: file.originalname,
-    parents: ['1-gETyQ6esrWy5MCw8QwYbPbtsXF4gkrw'],
+    parents: ['1-6XatljP8JxwXXDdW3bNQKtiX7AtRMu2'],
   };
   const media = {
     mimeType: file.mimetype,

@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 // Defineing Routes
 app.use('/api/v1/auth', require('./route/auth'));
 app.use('/api/v1/profile', require('./route/profile'));
+app.use('/api/v1/post', require('./route/post'));
 app.use('/api/v1/match', require('./route/match'));
 app.use('/api/v1/uploads', require('./route/uploads'));
 app.use('/api/v1/chat', require('./route/chat'));

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { uploadFile } from '../../store/fileupload/fileUpload';
 import { Link } from 'react-router-dom';
 
-const FileUploader = ({ callBack }) => {
+const FileUploader = ({ callBack, options }) => {
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const [imgSrc, setImgSrc] = useState([]);
@@ -53,7 +53,7 @@ const FileUploader = ({ callBack }) => {
         respoUrl.push(data);
         if (respoUrl?.length >= myImgs?.length) {
           callBack(respoUrl);
-        }   
+        }
       });
     }
   };
@@ -66,14 +66,6 @@ const FileUploader = ({ callBack }) => {
     </div>
   ) : (
     <div className="upld-wrap">
-      {imgSrc?.length > 0 && (
-        <button
-          className="waves-effect waves-light btn-large btn"
-          onClick={() => handleUpload()}
-        >
-          <i className="material-icons left">cloud_upload</i>Upload Now
-        </button>
-      )}
       {imgSrc?.length <= 0 && (
         <div className="Neon Neon-theme-dragdropbox">
           <input
@@ -92,6 +84,7 @@ const FileUploader = ({ callBack }) => {
             id="filer_input2"
             multiple="multiple"
             type="file"
+            accept="image/png, image/gif, image/jpeg"
             onChange={(e) => handleChange(e)}
           />
           <div className="Neon-input-dragDrop">
@@ -122,6 +115,20 @@ const FileUploader = ({ callBack }) => {
           </div>
         ))}
       </div>
+      {imgSrc?.length > 0 && (
+        <button
+          className="waves-effect waves-light btn-large btn"
+          onClick={() => handleUpload()}
+        >
+          {options?.btnText ? (
+            options?.btnText
+          ) : (
+            <span>
+              <i className="material-icons left">cloud_upload</i>Upload Now
+            </span>
+          )}
+        </button>
+      )}
     </div>
   );
 };

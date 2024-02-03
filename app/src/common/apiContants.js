@@ -13,4 +13,6 @@ module.exports = {
   APPROVE_MATCH: '/match/approve',
   GET_CHAT: '/chat/',
   GET_CONV: '/chat/get-conversation',
+  CREATE_POST: '/post/create',
+  GET_POSTS: '/post',
 };

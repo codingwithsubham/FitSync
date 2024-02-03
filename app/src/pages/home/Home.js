@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import ProfileSummry from './ProfileSummry';
-import AdSummry from './AdSummry';
-import SearchSummry from './SearchSummry';
+import CreatePost from '../post/CreatePost';
+import Posts from '../post/Posts';
 
 const Home = () => {
   const { profile, loading } = useSelector((state) => state.auth);
+  const [postView, setPostView] = useState(false);
 
   if (!profile && !loading) {
     return <Navigate to="/create-profile" />;
   }
 
+  const handlePostSubmit = (d) => {
+    setPostView(!postView);
+  };
+
   return (
     <div className="home insta-an">
-      <div className="row">
-        <div className="col s12 m6 l4">
-          <ProfileSummry />
+      {postView ? (
+        <CreatePost callback={handlePostSubmit} />
+      ) : (
+        <div className="create-post-trig" onClick={() => setPostView(!postView)}>
+          <h4>Create a Post !!</h4>
+          <i class="material-icons">add_a_photo</i>
         </div>
-        <div className="col s12 m6 l4">
-          <AdSummry />
-        </div>
-        <div className="col s12 m6 l4">
-          <SearchSummry />
-        </div>
-      </div>
+      )}
+      <Posts />
     </div>
   );
 };

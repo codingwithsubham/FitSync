@@ -51,7 +51,7 @@ const Form = ({ data, callBack }) => {
           </div>
         ) : itm?.type === 'select' ? (
           <div className="input-field col s6 select-box"  key={idx}>
-            <i className="material-icons prefix">{itm?.icon}</i>
+            {itm?.icon && <i className="material-icons prefix">{itm?.icon}</i>}
             <select
               onChange={(e) => handleChange(e, idx)}
               name={itm?.name}
@@ -67,7 +67,7 @@ const Form = ({ data, callBack }) => {
           </div>
         ) : itm?.type === 'textarea' ? (
           <div className="input-field col s6" key={idx}>
-            <i className="material-icons prefix">{itm?.icon}</i>
+            {itm?.icon && <i className="material-icons prefix">{itm?.icon}</i>}
             <textarea
               id={itm?.name}
               value={itm?.value}
@@ -81,7 +81,7 @@ const Form = ({ data, callBack }) => {
           </div>
         ) : (
           <div className="input-field col s6" key={idx}>
-            <i className="material-icons prefix">{itm?.icon}</i>
+            {itm?.icon && <i className="material-icons prefix">{itm?.icon}</i>}
             <input
               id={itm?.name}
               value={itm?.value}

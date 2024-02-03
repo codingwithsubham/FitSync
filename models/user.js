@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  profileId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'profile',
+  },
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

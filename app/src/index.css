@@ -21,9 +21,9 @@ code {
 }
 
 .fade-an {
-  animation: fade-s 1s;
-  -webkit-animation: fade-s 1s;
-  transition: 1s;
+  animation: fade-s 0.6s;
+  -webkit-animation: fade-s 0.6s;
+  transition: 0.6s;
   position: relative;
 }
 
@@ -49,16 +49,16 @@ code {
 }
 
 .slide-left {
-  animation: slide-left 0.1s;
-  -webkit-animation: slide-left 0.1s;
-  transition: 0.1s;
+  animation: slide-left 0.4s;
+  -webkit-animation: slide-left 0.4s;
+  transition: 0.4s;
   position: relative;
 }
 
 .slide-right {
-  animation: slide-right 0.1s;
-  -webkit-animation: slide-right 0.1s;
-  transition: 0.1s;
+  animation: slide-right 0.4s;
+  -webkit-animation: slide-right 0.4s;
+  transition: 0.4s;
   position: relative;
 }
 
