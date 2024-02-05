@@ -37,7 +37,7 @@ const initSocket = (http) => {
         },
         { new: true }
       ).populate('profiles');
-      await sendNotification('Shadimakers.com', 'A new message', data.to);
+      //await sendNotification('Shadimakers.com', 'A new message', data.to);
       socketIO.emit('receive_message', res);
     });
 

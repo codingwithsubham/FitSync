@@ -424,7 +424,7 @@ nav .notifications {
 
 .sidenav {
   width: 330px;
-  background: linear-gradient(180deg, #673AB7, #b58bff);
+  background: linear-gradient(180deg, #673ab7, #b58bff);
 }
 
 .side-nav-bg {
@@ -600,7 +600,7 @@ span.blt {
   border-radius: 20px 20px 0px 0px;
 }
 
-.sidenav li>a {
+.sidenav li > a {
   color: #fff;
 }
 
@@ -795,7 +795,7 @@ a.prfl-crd-lst {
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
-  background-color: #673ab79e;
+  background-color: #0000009e;
 }
 
 .mesgs-area {
@@ -1073,8 +1073,10 @@ textarea:focus {
 }
 
 .post-hdr .avatar img {
-  width: 100%;
+  width: 40px;
   border-radius: 50%;
+  height: 40px;
+  object-fit: cover;
 }
 
 .post-hdr .avatar-info {
@@ -1133,6 +1135,8 @@ textarea:focus {
 .post-imgs.scroll img {
   width: 80%;
   margin-right: 10px;
+  height: 300px;
+  object-fit: cover;
 }
 
 h1 {

@@ -27,6 +27,7 @@ export const buildProfile = (body) => async (dispatch) => {
     );
     dispatch(createProfile(res.data));
     dispatch(displayAlert('Profile Created Successfully', SUCCESS));
+    dispatch(loadUser());
   } catch (err) {
     dispatch(displayAlert('Can not create Profile', DANGER));
   }
