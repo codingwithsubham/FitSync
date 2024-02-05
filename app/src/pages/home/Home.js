@@ -23,7 +23,7 @@ const Home = () => {
       ) : (
         <div className="create-post-trig" onClick={() => setPostView(!postView)}>
           <h4>Create a Post !!</h4>
-          <i class="material-icons">add_a_photo</i>
+          <i className="material-icons">add_a_photo</i>
         </div>
       )}
       <Posts />

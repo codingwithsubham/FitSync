@@ -25,6 +25,7 @@ export const authSlice = createSlice({
       };
     },
     getUser: (state, { payload }) => {
+      payload?.token && localStorage.setItem(AUTH_TOKEN, payload.token);
       return {
         ...state,
         isAuthenticated: true,

@@ -424,6 +424,7 @@ nav .notifications {
 
 .sidenav {
   width: 330px;
+  background: linear-gradient(180deg, #673AB7, #b58bff);
 }
 
 .side-nav-bg {
@@ -599,6 +600,10 @@ span.blt {
   border-radius: 20px 20px 0px 0px;
 }
 
+.sidenav li>a {
+  color: #fff;
+}
+
 .sidenav.close {
   left: 0;
   transition: 1s;
@@ -669,11 +674,14 @@ span.blt {
 .profile-photos {
   padding: 10px;
   width: -webkit-fill-available;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .profile-photos .img-wrper {
-  width: 100%;
+  width: 49%;
 }
 
 .profile-photos .img-wrper img {
@@ -1025,7 +1033,7 @@ textarea:focus {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 10px;
-  color: #673AB7;
+  color: #673ab7;
 }
 
 .create-post-trig h4 {
@@ -1036,6 +1044,110 @@ textarea:focus {
 
 .home {
   padding: 10px;
+}
+
+.post-smry {
+  display: block;
+  width: 100%;
+  margin: 10px 0px;
+  border: 1px solid #b2b2b2;
+  border-radius: 10px;
+}
+
+.post-smry .post-imgs {
+  display: flex;
+}
+
+.post-smry .post-imgs img {
+  width: 100%;
+}
+
+.post-hdr {
+  display: flex;
+  align-items: center;
+  margin: 10px 5px 5px;
+}
+
+.post-hdr .avatar {
+  width: 40px;
+}
+
+.post-hdr .avatar img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.post-hdr .avatar-info {
+  width: 75%;
+  margin-left: 10px;
+}
+
+.post-hdr .avatar-info h1 {
+  font-size: 15px;
+  margin: 0px;
+  font-weight: 600;
+  color: #565656;
+}
+
+.post-hdr .avatar-info p {
+  margin: 1px 0px;
+  font-size: 10px;
+}
+
+.post-bottom {
+  width: 100%;
+}
+
+.post-bottom .actions {
+  display: flex;
+  width: 100%;
+  margin: 10px 5px;
+}
+
+.post-bottom .actions .action-itms {
+  width: 33%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.post-bottom .actions .action-itms i {
+  color: #673ab7;
+  background: #673ab738;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.caption {
+  padding: 5px 10px;
+}
+
+.post-imgs.scroll {
+  overflow-x: scroll;
+}
+
+.post-imgs.scroll img {
+  width: 80%;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 2px 0px;
+  color: #494949;
+}
+
+.wrkout-plnr {
+  margin: 10px;
+}
+
+.trtmnt-wrap {
+  margin: 10px;
 }
 
 @media only screen and (min-width: 768px) {

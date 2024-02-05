@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Profile = require('../models/profile');
-const User = require('../models/user');
 
 router.post('/', auth, async (req, res) => {
   try {
@@ -11,12 +10,6 @@ router.post('/', auth, async (req, res) => {
       profData: req.body,
     });
     await profile.save();
-    await User.findOneAndUpdate(
-      { _id: req.user._id },
-      {
-        $set: { profileId: profile?._id },
-      }
-    );
     return res.json(profile);
   } catch (error) {
     //console.log(error);
@@ -27,7 +20,7 @@ router.post('/', auth, async (req, res) => {
 router.get('/find', auth, async (req, res) => {
   try {
     let profiles = await Profile.aggregate([
-      { $match: { user: { $not: { $eq: req.user._id}} } },
+      { $match: { user: { $not: { $eq: req.user._id } } } },
       { $sample: { size: 20 } },
     ]);
     return res.json(profiles);
@@ -67,10 +60,12 @@ router.post('/update', auth, async (req, res) => {
 router.post('/photos', auth, async (req, res) => {
   try {
     let profile = await Profile.findOne({ user: req.user._id });
-    profile.profData = {
-      ...profile.profData,
-      imgs: [...profile.profData.imgs, ...req.body],
-    };
+    const photos = req.body?.filter((x) => x.id !== null);
+    if (photos.length > 0)
+      profile.profData = {
+        ...profile.profData,
+        imgs: [...profile.profData.imgs, ...photos],
+      };
     await profile.save();
     return res.json(profile);
   } catch (error) {

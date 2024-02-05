@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { uploads } = require('../middleware/fileUpload');
-const { authenticateGoogle, uploadToGoogleDrive, deleteFile } = require('../gapiUpload/Gapi');
+const { authenticateGoogle, uploadToGoogleDrive } = require('../gapiUpload/Gapi');
 
 router.post('/photos', auth, uploads.single('myFile'), async (req, res) => {
   try {
@@ -11,7 +11,6 @@ router.post('/photos', auth, uploads.single('myFile'), async (req, res) => {
     }
     const auth = authenticateGoogle();
     const response = await uploadToGoogleDrive(req.file, auth);
-    //deleteFile(req.file.path);
     return res.json(response.data);
   } catch (error) {
     console.log(error);

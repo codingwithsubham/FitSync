@@ -11,7 +11,7 @@ const Profile = require('../models/profile');
 router.post('/', async (req, res) => {
   const { id, pwd } = req.body;
   try {
-    let user = await User.findOne({ userid: id });
+    const user = await User.findOne({ userid: id });
     if (!user) {
       return res.status(400).json({ error: 'Invalid Credentials' });
     }
@@ -67,7 +67,20 @@ router.post('/register', async (req, res) => {
 router.get('/', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user._id });
-    return res.json({ user: req?.user, profile });
+    if(profile && !req.user.profile) {
+      jwt.sign(
+        { ...req.user, profile: profile._id },
+        jwtKey,
+        (err, token) => {
+          if (err) {
+            throw err;
+          }
+          return res.json({ token, user: req?.user, profile });
+        }
+      );
+    } else {
+      return res.json({ user: req?.user, profile });
+    }
   } catch (error) {
     //console.log(error);
     return res.status(500).json({ error: 'Server Error' });

@@ -7,7 +7,7 @@ router.post('/create', auth, async (req, res) => {
   try {
     const { caption, images } = req.body;
     const post = new Post({
-      user: req.profile.id,
+      user: req.user.profile,
       caption: caption,
       images: images,
     });
@@ -21,7 +21,7 @@ router.post('/create', auth, async (req, res) => {
 
 router.get('/', auth, async (req, res) => {
   try {
-    const posts = await Post.find({}).sort({timeStamp: -1}).populate();
+    const posts = await Post.find({}).sort({timeStamp: -1}).populate("user");
     return res.json(posts);
   } catch (error) {
     console.log(error);

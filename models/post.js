@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
-    ref: 'user',
+    ref: 'profile',
     require: true,
   },
   caption: {
@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
     {
       likedBy: {
         type: mongoose.Schema.ObjectId,
-        ref: 'user',
+        ref: 'profile',
       },
       timeStamp: {
         type: Date,
@@ -39,7 +39,7 @@ const PostSchema = new mongoose.Schema({
       },
       commentedBy: {
         type: mongoose.Schema.ObjectId,
-        ref: 'user',
+        ref: 'profile',
       },
       timeStamp: {
         type: Date,

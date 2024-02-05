@@ -15,6 +15,8 @@ import AddPhotos from '../pages/profile/AddPhotos';
 import MatchRequests from '../pages/match/MatchRequests';
 import Inbox from '../pages/chat/Inbox';
 import Chat from '../pages/chat/Chat';
+import WorkoutPlanner from '../pages/workout/WorkoutPlanner';
+import Treatment from '../pages/treatment/Treatment';
 
 const AppRoutes = () => {
   const [touchStart, setTouchStart] = useState(null);
@@ -53,6 +55,16 @@ const AppRoutes = () => {
           exact
           path="/create-profile"
           element={<PrivateRoute component={CreateProfile} />}
+        />
+        <Route
+          exact
+          path="/workout"
+          element={<PrivateRoute component={WorkoutPlanner} />}
+        />
+        <Route
+          exact
+          path="/treatment"
+          element={<PrivateRoute component={Treatment} />}
         />
         <Route
           exact
